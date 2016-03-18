@@ -56,7 +56,7 @@ char ** commonWords(char *str1, char *str2) {
 			
 			if (strcmp(strword1[i], strword2[j]) == 0){
 			
-				output[r] = (char*)malloc(20 * sizeof(char));
+				output[r] = (char*)malloc(100 * sizeof(char));
 
 				output[r++] = strword1[i];
 			}
