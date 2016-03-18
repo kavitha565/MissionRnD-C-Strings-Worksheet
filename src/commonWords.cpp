@@ -21,50 +21,49 @@ char ** commonWords(char *str1, char *str2) {
 	if (str1 == NULL || str2 == NULL)
 		return NULL;
 
-	char tok_str1[100][100];
-	int words_count_1, words_count_2;
+	char strword1[20][20];
+	int count1, count2;
 	int i = 0;
 	char **output = (char**)malloc(100 * sizeof(char *));
 	int k = 0;
-	char tok_str2[100][100];
+	char strword2[20][20];
 	for (int j = 0; str1[j] != '\0'; j++){
 		if (str1[j] != ' ')
-			tok_str1[i][k++] = str1[j];
+			strword1[i][k++] = str1[j];
 		else{
 			i++;
 			k = 0;
 		}
 	}
-	words_count_1 = i;
+	count1 = i;
 	i = 0; k = 0;
 
 	for (int j = 0; str2[j] != '\0'; j++){
 		if (str2[j] != ' ')
-			tok_str2[i][k++] = str2[j];
+			strword2[i][k++] = str2[j];
 		else{
 			i++;
 			k = 0;
 		}
 	}
 
-	words_count_2 = i;
+	count2 = i;
 
-	int t = 0;
-	for (i = 0; i <= words_count_1; i++){
+	int r = 0;
+	for (i = 0; i <= count1; i++){
 
-		for (int j = 0; j <= words_count_2; j++){
-			//cout << tok_str1[i] << "   " << tok_str2[j];
-			if (strcmp(tok_str1[i], tok_str2[j]) == 0){
-				//cout << tok_str1[i];
+		for (int j = 0; j <= count2; j++){
+			
+			if (strcmp(strword1[i], strword2[j]) == 0){
+			
+				output[r] = (char*)malloc(20 * sizeof(char));
 
-				output[t] = (char*)malloc(100 * sizeof(char));
-
-				output[t++] = tok_str1[i];
+				output[r++] = strword1[i];
 			}
 		}
 	}
 
-	if (t == 0)
+	if (r == 0)
 		return NULL;
 	else
 		return output;
